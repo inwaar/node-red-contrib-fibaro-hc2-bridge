@@ -15,7 +15,7 @@
     }
   },
   "dependencies": {
-    "fibaro-home-center2-client": "^0.2.0"
+    "fibaro-home-center2-client": "^0.2.1"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,14 @@
 The node connects to a HomeCenter and listens for device property changes, gives devices  friendly identifiers (e.g. `living-room/light/lamp`) and emit output node-red events.
 The node also consumes input events and calls HomeCenter actions based on given input events. 
 
-## Output event examples:
+## Flow example
+![nodered ui sidebar tabs](images/flow.png)
+
+```json
+[{"id":"81e3d6d5.cf8668","type":"home-center","z":"dfb9ceb.40e533","name":"HomeCenter 2","device":"","x":460,"y":100,"wires":[["6375721b.5dd3bc"],["54ad8d6d.220454"]]},{"id":"6375721b.5dd3bc","type":"debug","z":"dfb9ceb.40e533","name":"hc.event","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":700,"y":80,"wires":[]},{"id":"54ad8d6d.220454","type":"debug","z":"dfb9ceb.40e533","name":"hc.error","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":700,"y":120,"wires":[]},{"id":"6dbacab5.56a1a4","type":"inject","z":"dfb9ceb.40e533","name":"kitchen/lights/lamp : OFF","topic":"kitchen/lights/lamp","payload":"false","payloadType":"bool","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":190,"y":120,"wires":[["81e3d6d5.cf8668"]]},{"id":"5de166ca.8e9998","type":"inject","z":"dfb9ceb.40e533","name":"kitchen/lights/lamp : ON","topic":"kitchen/lights/lamp","payload":"true","payloadType":"bool","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":200,"y":80,"wires":[["81e3d6d5.cf8668"]]}]
+```
+
+## Output event examples
 
 Light has turned on:
 ```json
@@ -38,10 +45,10 @@ Device power consumption has changed:
 }
 ```
 
-## Input event examples:
+## Input event examples
 
 Event message format:
-```json
+```
 {
     "topic": "device literal identifier",
     "payload": {
@@ -72,7 +79,7 @@ Change RGB/W device color:
 }
 ```
 
-### Input message shortcuts:
+### Input message shortcuts
 `payload` can be a boolean value, in this case it will be transformed into `turnOn` and `turnOff` actions.
 
 A shortcut version of turning on a light (in case when a device has `turnOn` and `turnOff` actions), `true` calls `turnOn` and `false` calls `turnOff` action accordingly:
@@ -112,7 +119,6 @@ instead of:
     } 
 }
 ```
-
 
 ## Errors handling
 The second output allows handling error responses from HomeCenter and the node.

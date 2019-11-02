@@ -1,0 +1,150 @@
+<script type="text/javascript">
+    RED.nodes.registerType('home-center', {
+        category: 'advanced',
+        color: '#6598c8',
+        defaults: {
+            name: {value: "Home center"},
+            device: {value: "", type: "home-center-config", required: true},
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "icons/icon.png",
+        label: function () {
+            return this.name || "Home center bridge";
+        },
+    });
+</script>
+
+<script type="text/x-red" data-template-name="home-center">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-device"><i class="icon-tag"></i>Home center</label>
+        <input type="text" id="node-input-device" placeholder="">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="home-center">
+<h1 id="abridgebetweenfibarohomecenter2andnodered">A bridge between Fibaro HomeCenter 2 and NodeRed</h1>
+
+<p>The node connects to a HomeCenter and listens for device property changes, gives devices  friendly identifiers (e.g. <code>living-room/light/lamp</code>) and emit output node-red events.
+The node also consumes input events and calls HomeCenter actions based on given input events. </p>
+
+<h2 id="outputeventexamples">Output event examples:</h2>
+
+<p>Light has turned on:</p>
+
+<pre><code class="json language-json">{
+    "topic": "garage/light/lamp",
+    "id": 10,
+    "property": "value",
+    "payload": true,
+    "previous": false
+}
+</code></pre>
+
+<p>Temperature has changed:</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/climate/temperature",
+    "id": 20,
+    "property": "value",
+    "payload": 22.7,
+    "previous": 22.9
+}
+</code></pre>
+
+<p>Device power consumption has changed:</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/climate/fan",
+    "id": 30,
+    "property": "power",
+    "payload": 2.9,
+    "previous": 2.7
+}
+</code></pre>
+
+<h2 id="inputeventexamples">Input event examples:</h2>
+
+<p>Event message format:</p>
+
+<pre><code class="json language-json">{
+    "topic": "device literal identifier",
+    "payload": {
+        "action1": [],
+        "action2": [argument1],
+        "action3": [argument1, argument2, ...]
+    }
+}
+</code></pre>
+
+<p>Turn on a light:</p>
+
+<pre><code class="json language-json">{
+    "topic": "garage/light/lamp",
+    "payload": {
+        "turnOn": []
+    }
+}
+</code></pre>
+
+<p>Change RGB/W device color:</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/light/led-strip",
+    "payload": {
+        "setColor": [255, 0, 0, 0]
+    }
+}
+</code></pre>
+
+<h3 id="inputmessageshortcuts">Input message shortcuts:</h3>
+
+<p><code>payload</code> can be a boolean value, in this case it will be transformed into <code>turnOn</code> and <code>turnOff</code> actions.</p>
+
+<p>A shortcut version of turning on a light (in case when a device has <code>turnOn</code> and <code>turnOff</code> actions), <code>true</code> calls <code>turnOn</code> and <code>false</code> calls <code>turnOff</code> action accordingly:</p>
+
+<pre><code class="json language-json">{
+    "topic": "garage/light/lamp",
+    "payload": true
+}
+</code></pre>
+
+<p>In the case when <code>payload</code> is nether object nor boolean it will be transformed into <code>setValue</code> action. </p>
+
+<p>A shortcut version of setting a brightness of an RGB/W or a dimmer device (in case when a device has <code>setValue</code> action):</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/light/led-strip",
+    "payload": 50
+}
+</code></pre>
+
+<p>In the case when an action has only one argument it can be passed without wrapping it into an array:</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/climate/thermostat",
+    "payload": {
+        "setFanMode": 2
+    }
+}
+</code></pre>
+
+<p>instead of:</p>
+
+<pre><code class="json language-json">{
+    "topic": "living-room/climate/thermostat",
+    "payload": {
+        "setFanMode": [2]
+    }
+}
+</code></pre>
+
+<h2 id="errorshandling">Errors handling</h2>
+
+<p>The second output allows handling error responses from HomeCenter and the node.</p>
+</script>

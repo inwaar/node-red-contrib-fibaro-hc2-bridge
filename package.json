@@ -1,0 +1,24 @@
+{
+  "name": "node-red-contrib-fibaro-hc2-bridge",
+  "version": "0.1.1",
+  "description": "A bridge between Fibaro HomeCenter 2 and NodeRed",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "fibaro",
+    "hc"
+  ],
+  "node-red": {
+    "nodes": {
+      "home-center": "home-center/home-center.js",
+      "home-center-config": "home-center/home-center-config.js"
+    }
+  },
+  "dependencies": {
+    "fibaro-home-center2-client": "^0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https@github.com:inwaar/node-red-contrib-fibaro-hc2-bridge.git"
+  }
+}

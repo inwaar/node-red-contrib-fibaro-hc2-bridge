@@ -4,7 +4,7 @@ The node connects to a HomeCenter and listens for device property changes, gives
 The node also consumes input events and calls HomeCenter actions based on given input events. 
 
 ## Flow example
-![nodered ui sidebar tabs](images/flow.png)
+![nodered ui sidebar tabs](https://raw.githubusercontent.com/inwaar/node-red-contrib-fibaro-hc2-bridge/master/images/flow.png)
 
 ```json
 [{"id":"81e3d6d5.cf8668","type":"home-center","z":"dfb9ceb.40e533","name":"HomeCenter 2","device":"","x":460,"y":100,"wires":[["6375721b.5dd3bc"],["54ad8d6d.220454"]]},{"id":"6375721b.5dd3bc","type":"debug","z":"dfb9ceb.40e533","name":"hc.event","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":700,"y":80,"wires":[]},{"id":"54ad8d6d.220454","type":"debug","z":"dfb9ceb.40e533","name":"hc.error","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","x":700,"y":120,"wires":[]},{"id":"6dbacab5.56a1a4","type":"inject","z":"dfb9ceb.40e533","name":"kitchen/lights/lamp : OFF","topic":"kitchen/lights/lamp","payload":"false","payloadType":"bool","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":190,"y":120,"wires":[["81e3d6d5.cf8668"]]},{"id":"5de166ca.8e9998","type":"inject","z":"dfb9ceb.40e533","name":"kitchen/lights/lamp : ON","topic":"kitchen/lights/lamp","payload":"true","payloadType":"bool","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":200,"y":80,"wires":[["81e3d6d5.cf8668"]]}]
@@ -128,4 +128,4 @@ The information for introspecting the devices friendly names and all possible ac
 1) Navigate to `Context Data`
 2) Select a HomeCenter node
 3) Click on `Refresh` 
-4) Devices and their available actions grouped by rooms and categories can be introspected on the node context: ![nodered ui sidebar tabs](images/introspecting.png)
+4) Devices and their available actions grouped by rooms and categories can be introspected on the node context: ![nodered ui sidebar tabs](https://github.com/inwaar/node-red-contrib-fibaro-hc2-bridge/raw/master/images/introspecting.png)

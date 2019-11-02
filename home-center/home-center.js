@@ -17,7 +17,7 @@ module.exports = function (RED) {
             port: device.port,
             user: device.credentials.username,
             password: device.credentials.password,
-            debug: false
+            debug: config.debug
         };
 
         let client = new Fibaro.Hc2Client(options);

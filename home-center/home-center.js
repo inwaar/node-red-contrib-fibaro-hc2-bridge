@@ -7,6 +7,12 @@ module.exports = function (RED) {
         var device = RED.nodes.getNode(config.device);
 
         node.status({});
+
+        if (config.disable) {
+            node.status({fill: 'grey', shape: 'dot', text: 'disabled'});
+            return;
+        }
+
         node.status({fill: 'yellow', shape: 'dot', text: 'connecting...'});
 
         /**

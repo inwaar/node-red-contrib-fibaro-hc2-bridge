@@ -6,6 +6,7 @@
             name: {value: "Home center"},
             disable: {value: false},
             debug: {value: false},
+            timeout: {value: "30000"},
             device: {value: "", type: "home-center-config", required: true},
         },
         inputs: 1,
@@ -26,6 +27,11 @@
     <div class="form-row">
         <label for="node-input-device"><i class="icon-tag"></i>Home center</label>
         <input type="text" id="node-input-device" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-timeout"><i class="fa fa-clock-o"></i> Timeout (ms)</label>
+        <input type="text" id="node-input-timeout" placeholder="30000">
     </div>
 
     <div class="form-row">

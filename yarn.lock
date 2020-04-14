@@ -142,10 +142,10 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
   integrity sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
 
-fibaro-home-center2-client@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/fibaro-home-center2-client/-/fibaro-home-center2-client-0.2.2.tgz#e1afb8544d3091269f553e1c2f870123fa782967"
-  integrity sha512-EGZlw3uwd9SK3/IX4WThoh3tor0o1gZKpeCGbyPg45OqzYgJRybj248ZGVcAoOsYh94cDvSZ+3xetOX3NFCNNw==
+fibaro-home-center2-client@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/fibaro-home-center2-client/-/fibaro-home-center2-client-0.3.0.tgz#9d3144fcc175dffedfd1d6d32f0d2809ca585e6a"
+  integrity sha512-hlkaaCrxZ2cQnzbaul6L0WNGRFsde3Faz3pu4p4guN+9G+4zsBy0hVAX08p4d+/luBpouORTnKuIEoEJ1nRR8Q==
   dependencies:
     "@akanass/rx-http-request" "^3.3.0"
     rxjs "^6.5.3"

@@ -18,13 +18,17 @@ module.exports = function (RED) {
         /**
          * @type Fibaro.CLIENT_OPTIONS
          */
-        const options = {
+        let options = {
             host: device.host,
             port: device.port,
             user: device.credentials.username,
             password: device.credentials.password,
             debug: config.debug
         };
+
+        if (config.timeout) {
+            options['timeout'] = config.timeout;
+        }
 
         let client = new Fibaro.Hc2Client(options);
 
